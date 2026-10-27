@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca de Teoría Musical</title>
+    <link rel="stylesheet" href="stylo.css">
+    <!-- Font Awesome para íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="header">
+        <h1><i class="fa-solid fa-music"></i> Biblioteca de Teoría Musical</h1>
+        <p>Explora escalas, acordes, estructuras y escucha su sonido en tiempo real.</p>
+    </header>
+
+    <main class="container">
+        <!-- Panel de Control -->
+        <section class="controls-panel">
+            <div class="control-group">
+                <label for="root-note"><i class="fa-solid fa-key"></i> Tónica (Nota Raíz)</label>
+                <select id="root-note">
+                    <option value="0">Do (C)</option>
+                    <option value="1">Do# / Reb (C#/Db)</option>
+                    <option value="2">Re (D)</option>
+                    <option value="3">Re# / Mib (D#/Eb)</option>
+                    <option value="4">Mi (E)</option>
+                    <option value="5">Fa (F)</option>
+                    <option value="6">Fa# / Solb (F#/Gb)</option>
+                    <option value="7">Sol (G)</option>
+                    <option value="8">Sol# / Lab (G#/Ab)</option>
+                    <option value="9">La (A)</option>
+                    <option value="10">La# / Sib (A#/Bb)</option>
+                    <option value="11">Si (B)</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label for="category-select"><i class="fa-solid fa-layer-group"></i> Categoría</label>
+                <select id="category-select">
+                    <optgroup label="Escalas">
+                        <option value="scale-major">Escala Mayor (Jónica)</option>
+                        <option value="scale-minor-nat">Escala Menor Natural (Eólica)</option>
+                        <option value="scale-minor-harm">Escala Menor Armónica</option>
+                        <option value="scale-minor-mel">Escala Menor Melódica</option>
+                        <option value="scale-penta-maj">Pentatónica Mayor</option>
+                        <option value="scale-penta-min">Pentatónica Menor / Blues</option>
+                    </optgroup>
+                    <optgroup label="Modos Griegos">
+                        <option value="mode-dorian">Dórico</option>
+                        <option value="mode-phrygian">Frigio</option>
+                        <option value="mode-lydian">Lidio</option>
+                        <option value="mode-mixolydian">Mixolidio</option>
+                        <option value="mode-locrian">Lócrio</option>
+                    </optgroup>
+                    <optgroup label="Acordes (Tríadas)">
+                        <option value="chord-maj">Mayor (Tríada)</option>
+                        <option value="chord-min">Menor (Tríada)</option>
+                        <option value="chord-dim">Disminuido (Tríada)</option>
+                        <option value="chord-aug">Aumentado (Tríada)</option>
+                        <option value="chord-sus2">Suspendido 2 (Sus2)</option>
+                        <option value="chord-sus4">Suspendido 4 (Sus4)</option>
+                    </optgroup>
+                    <optgroup label="Acordes de Séptima (Tétradas)">
+                        <option value="chord-maj7">Mayor 7 (Maj7)</option>
+                        <option value="chord-min7">Menor 7 (m7)</option>
+                        <option value="chord-dom7">Dominante 7 (7)</option>
+                        <option value="chord-m7b5">Semidisminuido (m7b5)</option>
+                        <option value="chord-dim7">Disminuido 7 (dim7)</option>
+                    </optgroup>
+                </select>
+            </div>
+
+            <div class="control-group actions">
+                <button id="btn-play" class="btn btn-primary"><i class="fa-solid fa-play"></i> Reproducir</button>
+                <button id="btn-arpeggio" class="btn btn-secondary"><i class="fa-solid fa-bars-staggered"></i> Arpegio</button>
+            </div>
+        </section>
+
+        <!-- Información teórica -->
+        <section class="info-card">
+            <h2 id="info-title">Escala Mayor de Do</h2>
+            <div class="info-details">
+                <p><strong>Notas:</strong> <span id="info-notes" class="badge">Do, Re, Mi, Fa, Sol, La, Si</span></p>
+                <p><strong>Fórmula:</strong> <span id="info-formula">T - T - S - T - T - T - S</span></p>
+                <p><strong>Descripción:</strong> <span id="info-desc">La escala fundamental de la música occidental.</span></p>
+            </div>
+        </section>
+
+        <!-- Pestañas de Instrumentos -->
+        <section class="visualizer-container">
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="piano"><i class="fa-solid fa-keyboard"></i> Piano</button>
+                <button class="tab-btn" data-tab="guitar"><i class="fa-solid fa-guitar"></i> Guitarra (Mástil)</button>
+            </div>
+
+            <!-- Vista Piano -->
+            <div id="piano-view" class="tab-content active">
+                <div class="piano" id="piano-keyboard">
+                    <!-- Las teclas se generan con JS -->
+                </div>
+            </div>
+
+            <!-- Vista Guitarra -->
+            <div id="guitar-view" class="tab-content">
+                <div class="fretboard" id="fretboard">
+                    <!-- El mástil se genera con JS -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

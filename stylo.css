@@ -1,0 +1,274 @@
+:root {
+    --primary: #4f46e5;
+    --primary-hover: #4338ca;
+    --bg-dark: #0f172a;
+    --card-bg: #1e293b;
+    --text-light: #f8fafc;
+    --text-muted: #94a3b8;
+    --accent: #06b6d4;
+    --note-active: #ef4444;
+    --note-root: #f59e0b;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.header {
+    text-align: center;
+    padding: 2rem 1rem;
+    background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+}
+
+.header h1 {
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.header p {
+    color: var(--text-muted);
+}
+
+.container {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    width: 100%;
+}
+
+/* Panel de Controles */
+.controls-panel {
+    background-color: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 12px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.control-group label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--accent);
+}
+
+select {
+    padding: 0.7rem;
+    border-radius: 8px;
+    border: 1px solid #334155;
+    background-color: #0f172a;
+    color: var(--text-light);
+    font-size: 0.95rem;
+    cursor: pointer;
+    outline: none;
+}
+
+select:focus {
+    border-color: var(--primary);
+}
+
+.actions {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 0.5rem;
+}
+
+.btn {
+    flex: 1;
+    padding: 0.7rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+    color: white;
+}
+
+.btn-primary { background-color: var(--primary); }
+.btn-primary:hover { background-color: var(--primary-hover); }
+
+.btn-secondary { background-color: #334155; }
+.btn-secondary:hover { background-color: #475569; }
+
+/* Tarjeta Teórica */
+.info-card {
+    background-color: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    border-left: 5px solid var(--accent);
+}
+
+.info-card h2 {
+    margin-bottom: 1rem;
+    color: var(--accent);
+}
+
+.info-details p {
+    margin-bottom: 0.5rem;
+    font-size: 1.05rem;
+}
+
+.badge {
+    background-color: #334155;
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+    color: #f1f5f9;
+    letter-spacing: 1px;
+}
+
+/* Visualizadores y Tabs */
+.visualizer-container {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    padding: 1.5rem;
+    overflow-x: auto;
+}
+
+.tabs {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #334155;
+}
+
+.tab-btn {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    padding: 0.7rem 1.2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+}
+
+.tab-btn.active {
+    color: var(--text-light);
+    border-bottom-color: var(--primary);
+    font-weight: bold;
+}
+
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+/* Piano */
+.piano {
+    display: flex;
+    position: relative;
+    height: 180px;
+    justify-content: center;
+    padding: 10px 0;
+    user-select: none;
+}
+
+.key {
+    border-radius: 0 0 5px 5px;
+    cursor: pointer;
+    position: relative;
+    transition: background-color 0.1s;
+}
+
+.key.white {
+    width: 40px;
+    height: 160px;
+    background: white;
+    border: 1px solid #ccc;
+    z-index: 1;
+}
+
+.key.black {
+    width: 26px;
+    height: 100px;
+    background: #111;
+    margin-left: -13px;
+    margin-right: -13px;
+    z-index: 2;
+}
+
+.key.active { background-color: var(--note-active) !important; }
+.key.root { background-color: var(--note-root) !important; }
+
+.key-label {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.75rem;
+    color: #333;
+    pointer-events: none;
+}
+
+.key.black .key-label { color: #fff; }
+
+/* Guitarra */
+.fretboard {
+    display: flex;
+    flex-direction: column;
+    background: #451a03;
+    padding: 10px 0;
+    border-radius: 8px;
+    min-width: 700px;
+}
+
+.string {
+    display: flex;
+    height: 28px;
+    align-items: center;
+    position: relative;
+}
+
+.string::before {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; top: 50%;
+    height: 2px;
+    background: #94a3b8;
+    z-index: 1;
+}
+
+.fret {
+    flex: 1;
+    height: 100%;
+    border-right: 2px solid #cbd5e1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+}
+
+.fret-note {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.fret-note.active { opacity: 1; background-color: var(--note-active); color: white; }
+.fret-note.root { opacity: 1; background-color: var(--note-root); color: black; }
